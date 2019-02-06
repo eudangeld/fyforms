@@ -6,18 +6,24 @@ form:
       Type : text
       flex : 1
       icon : access_alarms
+      validator : nameValidator
+
   - column: 
       label: First name
       hint : Fisrt name
       Type : text
       flex : 2
       icon : ac_unit
+      validator : nameValidator
+
   - column: 
       label: First name
       hint : Fisrt name
       Type : text
       flex : 1
       icon : accessible_forward
+      validator : nameValidator
+
 - row:
    - column:  
       label: Last name
@@ -25,6 +31,7 @@ form:
       type : text
       flex : 1
       icon : add_comment
+      validator : nameValidator
       
 - row:
   - column: 
@@ -33,9 +40,12 @@ form:
       Type : text
       flex : 2
       icon : accessibility_new
+      validator : nameValidator
+
   - column: 
       label: Age
       hint : Age
       type : number
       flex : 1
       icon : add_photo_alternate
+      validator : nameValidator

@@ -14,10 +14,15 @@ class FyForms extends StatefulWidget {
 
 class _FyFormsState extends State<FyForms> {
   List<Widget> formFields = <Widget>[];
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     load();
+    formFields.add(FlatButton(
+      child: Text('Validate Form'),
+      onPressed: () => print(_formKey.currentState.validate()),
+    ));
   }
 
   @override
@@ -27,9 +32,12 @@ class _FyFormsState extends State<FyForms> {
         appBar: AppBar(
           title: Text('FyForms'),
         ),
-        body: Container(
-          child: Column(
-            children: formFields,
+        body: Form(
+          key: _formKey,
+          child: Container(
+            child: Column(
+              children: formFields,
+            ),
           ),
         ),
       ),

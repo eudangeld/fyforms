@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import "package:fy/src/fy_icons.dart" as fycons;
+import "package:fy/src/fy_validators.dart" as fyvalidators;
 
 class FyFormField extends StatelessWidget {
   FyFormField({
@@ -17,6 +18,9 @@ class FyFormField extends StatelessWidget {
     return Expanded(
       flex: fieldData['column']['flex'],
       child: TextFormField(
+        validator: fieldData['column']['validator'] != null
+            ? fyvalidators.validators[fieldData['column']['validator']]
+            : (value) => value,
         decoration: InputDecoration(
             icon: Icon(fycons.t[fieldData['column']['icon']]),
             hintText: fieldData['column']['hint'],
