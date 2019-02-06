@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fy/src/widgets/fy_form_field.dart';
 import 'package:yaml/yaml.dart';
-import "package:fy/src/fyicons.dart" as fycons;
 
 void main() {
   runApp(FyForms());
@@ -47,26 +47,13 @@ class _FyFormsState extends State<FyForms> {
   void _buildRow(dynamic line) {
     List<Widget> row = <Widget>[];
     for (dynamic rowData in line['row']) {
-      row.add(_buildTextField(rowData));
+      row.add(FyFormField(
+        fieldData: rowData,
+      ));
     }
 
     setState(() {
       formFields.add(Row(children: row));
     });
-  }
-
-  Widget _buildTextField(dynamic formData) {
-    return Expanded(
-      flex: formData['column']['flex'],
-      child: TextFormField(
-        decoration: InputDecoration(
-            icon: Icon(fycons.t[formData['column']['icon']]),
-            hintText: formData['column']['hint'],
-            labelText: formData['column']['label'],
-            enabledBorder: const OutlineInputBorder(
-              borderSide: BorderSide(style: BorderStyle.solid),
-            )),
-      ),
-    );
   }
 }
