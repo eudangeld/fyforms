@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fy/src/widgets/fy_form_field.dart';
+import 'package:fy/src/fy_theme.dart';
 import 'package:yaml/yaml.dart';
 
 void main() {
@@ -15,9 +16,13 @@ class FyForms extends StatefulWidget {
 class _FyFormsState extends State<FyForms> {
   List<Widget> formFields = <Widget>[];
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  ThemeData theme;
+  FyTheme fytheme;
 
   @override
   void initState() {
+    fytheme = FyTheme();
+    theme = ThemeData();
     load();
     formFields.add(FlatButton(
       child: Text('Validate Form'),
@@ -28,6 +33,7 @@ class _FyFormsState extends State<FyForms> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: theme,
       home: Scaffold(
         appBar: AppBar(
           title: Text('FyForms'),
@@ -47,6 +53,11 @@ class _FyFormsState extends State<FyForms> {
   Future load() async {
     dynamic yamlFile = await rootBundle.loadString('assets/forms.yaml');
     dynamic yaml = loadYaml(yamlFile);
+    setState(() {
+      fytheme = FyTheme(fyData: yaml['theme']);
+      theme = fytheme.main();
+    });
+
     for (dynamic line in yaml['form']) {
       _buildRow(line);
     }
