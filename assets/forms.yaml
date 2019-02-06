@@ -1,0 +1,35 @@
+form: 
+- row:
+  - column: 
+      label: First name
+      hint : Fisrt name
+      Type : text
+      flex : 1
+  - column: 
+      label: First name
+      hint : Fisrt name
+      Type : text
+      flex : 2
+  - column: 
+      label: First name
+      hint : Fisrt name
+      Type : text
+      flex : 1
+- row:
+   - column:  
+      label: Last name
+      hint : Last name
+      type : text
+      flex : 1
+      
+- row:
+  - column: 
+      label: Gender
+      hint : Gender
+      Type : text
+      flex : 2
+  - column: 
+      label: Age
+      hint : Age
+      type : number
+      flex : 1

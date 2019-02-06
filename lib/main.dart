@@ -1,38 +1,69 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:yaml/yaml.dart';
 
 void main() {
-  var doc = loadYaml("forms");
-  print(jsonEncode(doc));
-  runApp(MyApp());
+  runApp(FyForms());
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class FyForms extends StatefulWidget {
+  @override
+  _FyFormsState createState() => _FyFormsState();
+}
+
+class _FyFormsState extends State<FyForms> {
+  List<Widget> formFields = <Widget>[];
+
+  @override
+  void initState() {
+    load();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('FyForms'),
+        ),
+        body: Container(
+          child: Column(
+            children: formFields,
+          ),
+        ),
       ),
-      home: MyHomePage(),
     );
   }
-}
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
+  Future load() async {
+    dynamic yamlFile = await rootBundle.loadString('assets/forms.yaml');
+    dynamic yaml = loadYaml(yamlFile);
+    for (dynamic line in yaml['form']) {
+      _buildRow(line);
+    }
+  }
 
-class _MyHomePageState extends State<MyHomePage> {
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: <Widget>[Text('CURINTIHA')],
+  void _buildRow(dynamic line) {
+    List<Widget> row = <Widget>[];
+    for (dynamic rowData in line['row']) {
+      row.add(_buildTextField(rowData));
+    }
+
+    setState(() {
+      formFields.add(Row(children: row));
+    });
+  }
+
+  Widget _buildTextField(dynamic formData) {
+    return Expanded(
+      flex: formData['column']['flex'],
+      child: TextFormField(
+        decoration: InputDecoration(
+            hintText: formData['column']['hint'],
+            labelText: formData['column']['label'],
+            enabledBorder: const OutlineInputBorder(
+              borderSide: BorderSide(style: BorderStyle.solid),
+            )),
       ),
     );
   }
