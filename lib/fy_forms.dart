@@ -6,23 +6,23 @@ class FyForms extends StatefulWidget {
   @override
   _FyFormsState createState() => _FyFormsState();
   FyForms({
-    @required this.onSave,
     @required this.yaml,
-    @required this.button,
   });
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   dynamic yaml;
-  final Function onSave;
-  final Widget button;
 
   bool validate() => _formKey.currentState.validate();
+  final Map<String, String> data = {};
+  Map<String, String> save() {
+    _formKey.currentState.save();
+    return data;
+  }
 }
 
 class _FyFormsState extends State<FyForms> {
   List<Widget> formFields;
 
   ThemeData theme;
-  final Map<String, String> data = {};
 
   @override
   void initState() {
@@ -40,7 +40,7 @@ class _FyFormsState extends State<FyForms> {
     return Form(
       key: widget._formKey,
       child: Column(
-        children: formFields..add(widget.button),
+        children: formFields,
       ),
     );
   }
@@ -49,7 +49,7 @@ class _FyFormsState extends State<FyForms> {
     List<Widget> row = <Widget>[];
     for (dynamic rowData in line['row']) {
       row.add(FyFormField(
-        data: data,
+        data: widget.data,
         themData: theme,
         fieldData: rowData,
       ));

@@ -5,7 +5,8 @@ class FyTheme {
   dynamic fyData;
 
   ThemeData main() {
-    print(fyData['accentColor']);
+    print(fyData);
+
     return ThemeData(
         primaryColor: Color(fyData['primaryColor']),
         textTheme: TextTheme(

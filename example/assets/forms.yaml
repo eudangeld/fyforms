@@ -5,8 +5,6 @@ theme:
   label-color : 0xFFFF1122
   hint-size : 15.0
   hint-color : 0xFF4433FF
-  
-    
 form:
 - row:
   - column: 
@@ -29,5 +27,3 @@ form:
       icon : ac_unit
       validations: 
         isNotEmpty: Preencha todo mundo
-
-  

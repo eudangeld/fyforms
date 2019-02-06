@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fyforms/fy_forms.dart';
-import 'package:fyforms/fy.dart';
 import 'package:yaml/yaml.dart';
 
 void main() => runApp(MyApp());
@@ -36,15 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Future loadYamlFile() async {
     dynamic yamlFile = await rootBundle.loadString('assets/forms.yaml');
     setState(() {
-      Fy f = Fy(
-          button: FlatButton(
-            child: Text('dasda'),
-            onPressed: () => print('dasd'),
-          ),
-          onSave: () => print('ons save'),
-          yaml: yamlFile);
-
-      //fyForm = FyForms(yaml: loadYaml(yamlFile));
+      fyForm = FyForms(yaml: loadYaml(yamlFile));
     });
   }
 
@@ -57,8 +48,15 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
           child: Column(
         children: <Widget>[
-          fyForm,
-          FlatButton(child: Text('Hit ME'), onPressed: () {})
+          fyForm != null ? fyForm : Container(),
+          FlatButton(
+              child: Text('Hit ME'),
+              onPressed: () {
+                if (fyForm.validate()) {
+                  final data = fyForm.save();
+                  print(data);
+                }
+              })
         ],
       )),
     );
