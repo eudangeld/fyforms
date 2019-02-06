@@ -6,7 +6,6 @@ theme:
   hint-size : 15.0
   hint-color : 0xFF4433FF
   
-    
 form:
 - row:
   - column: 
@@ -15,8 +14,6 @@ form:
       Type : text
       flex : 1
       icon : access_alarms
-      validations:
-        - isNotEmpty: This field is required
 
   - column: 
       label: First name
@@ -24,8 +21,6 @@ form:
       Type : text
       flex : 2
       icon : ac_unit
-      validations:
-        - isNotEmpty: This field is required
 
   - column: 
       label: First name
@@ -33,8 +28,6 @@ form:
       Type : text
       flex : 1
       icon : accessible_forward
-      validations:
-        - isNotEmpty: This field is required
 
 - row:
    - column:  
@@ -43,8 +36,6 @@ form:
       type : text
       flex : 1
       icon : add_comment
-      validations:
-        - isNotEmpty: This field is required
       
 - row:
   - column: 
@@ -53,9 +44,8 @@ form:
       Type : text
       flex : 2
       icon : accessibility_new
-      validations:
-        - isNotEmpty: This field is required
 
+- row:
   - column: 
       label: Age
       hint : Age
@@ -63,4 +53,5 @@ form:
       flex : 1
       icon : add_photo_alternate
       validations:
-        - isNotEmpty: This field is required
+        isNotEmpty: This field is required
+        isInt: Ages should be integers

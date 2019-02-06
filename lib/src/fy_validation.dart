@@ -1,9 +1,14 @@
 import 'package:validators/validators.dart';
+import 'package:yaml/yaml.dart';
 
 typedef bool Validator(String input);
 typedef String Validate(String input);
 
-Validate validate(Map<String, String> validations) {
+Validate validate(YamlMap validations) {
+  if (validations == null) {
+    return null;
+  }
+
   return (String input) {
     final validationsLength = validations.length;
 
@@ -18,12 +23,14 @@ Validate validate(Map<String, String> validations) {
 
       final validator = validators[validationName];
 
+      print(validator);
+
       if (!validator(input)) {
         return validationMessage;
       }
-
-      return null;
     }
+
+    return null;
   };
 }
 
