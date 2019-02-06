@@ -23,8 +23,6 @@ Validate validate(YamlMap validations) {
 
       final validator = validators[validationName];
 
-      print(validator);
-
       if (!validator(input)) {
         return validationMessage;
       }

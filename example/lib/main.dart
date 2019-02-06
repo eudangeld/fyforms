@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fyforms/fy_forms.dart';
+import 'package:fyforms/fy.dart';
 import 'package:yaml/yaml.dart';
 
 void main() => runApp(MyApp());
@@ -24,19 +25,26 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Widget fyForm;
+  FyForms fyForm;
 
   @override
   void initState() {
     super.initState();
     loadYamlFile();
-    fyForm = Container();
   }
 
   Future loadYamlFile() async {
     dynamic yamlFile = await rootBundle.loadString('assets/forms.yaml');
     setState(() {
-      fyForm = FyForms(yaml: loadYaml(yamlFile));
+      Fy f = Fy(
+          button: FlatButton(
+            child: Text('dasda'),
+            onPressed: () => print('dasd'),
+          ),
+          onSave: () => print('ons save'),
+          yaml: yamlFile);
+
+      //fyForm = FyForms(yaml: loadYaml(yamlFile));
     });
   }
 
@@ -47,8 +55,12 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('Fyforms example'),
       ),
       body: Center(
-        child: fyForm,
-      ),
+          child: Column(
+        children: <Widget>[
+          fyForm,
+          FlatButton(child: Text('Hit ME'), onPressed: () {})
+        ],
+      )),
     );
   }
 }

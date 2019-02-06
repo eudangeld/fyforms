@@ -10,51 +10,24 @@ theme:
 form:
 - row:
   - column: 
+      id: first_name
       label: First name
       hint : Fisrt name
       Type : text
       flex : 1
       icon : access_alarms
-      validator : nameValidator
+      validations: 
+        isNotEmpty: Preencha todo mundo
+        isInt: Precisa ser inteiro
 
-  - column: 
+  - column:
+      id: last_name
       label: First name
       hint : Fisrt name
       Type : text
       flex : 2
       icon : ac_unit
-      validator : nameValidator
+      validations: 
+        isNotEmpty: Preencha todo mundo
 
-  - column: 
-      label: First name
-      hint : Fisrt name
-      Type : text
-      flex : 1
-      icon : accessible_forward
-      validator : nameValidator
-
-- row:
-   - column:  
-      label: Last name
-      hint : Last name
-      type : text
-      flex : 1
-      icon : add_comment
-      validator : nameValidator
-      
-- row:
-  - column: 
-      label: Gender
-      hint : Gender
-      Type : text
-      flex : 2
-      icon : accessibility_new
-      validator : nameValidator
-
-  - column: 
-      label: Age
-      hint : Age
-      type : number
-      flex : 1
-      icon : add_photo_alternate
-      validator : nameValidator
+  

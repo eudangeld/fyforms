@@ -6,11 +6,13 @@ class FyFormField extends StatelessWidget {
   FyFormField({
     @required this.fieldData,
     @required this.themData,
+    @required this.data,
     Key key,
   }) : super(key: key);
   dynamic fieldData;
   BuildContext context;
   ThemeData themData;
+  final Map<String, String> data;
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,7 @@ class FyFormField extends StatelessWidget {
         return Expanded(
           flex: fieldData['column']['flex'],
           child: TextFormField(
+            onSaved: (value) => data[fieldData['column']['id']] = value,
             validator: validate(fieldData['column']['validations']),
             decoration: InputDecoration(
                 hintStyle: themData.textTheme.display1,
