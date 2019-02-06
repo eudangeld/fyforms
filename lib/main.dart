@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:yaml/yaml.dart';
+import "package:fy/src/fyicons.dart" as fycons;
 
 void main() {
   runApp(FyForms());
@@ -59,6 +60,7 @@ class _FyFormsState extends State<FyForms> {
       flex: formData['column']['flex'],
       child: TextFormField(
         decoration: InputDecoration(
+            icon: Icon(fycons.t[formData['column']['icon']]),
             hintText: formData['column']['hint'],
             labelText: formData['column']['label'],
             enabledBorder: const OutlineInputBorder(
