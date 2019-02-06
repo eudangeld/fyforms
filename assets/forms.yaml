@@ -6,7 +6,8 @@ form:
       Type : text
       flex : 1
       icon : access_alarms
-      validator : nameValidator
+      validations:
+        - isNotEmpty: This field is required
 
   - column: 
       label: First name
@@ -14,7 +15,8 @@ form:
       Type : text
       flex : 2
       icon : ac_unit
-      validator : nameValidator
+      validations:
+        - isNotEmpty: This field is required
 
   - column: 
       label: First name
@@ -22,7 +24,8 @@ form:
       Type : text
       flex : 1
       icon : accessible_forward
-      validator : nameValidator
+      validations:
+        - isNotEmpty: This field is required
 
 - row:
    - column:  
@@ -31,7 +34,8 @@ form:
       type : text
       flex : 1
       icon : add_comment
-      validator : nameValidator
+      validations:
+        - isNotEmpty: This field is required
       
 - row:
   - column: 
@@ -40,7 +44,8 @@ form:
       Type : text
       flex : 2
       icon : accessibility_new
-      validator : nameValidator
+      validations:
+        - isNotEmpty: This field is required
 
   - column: 
       label: Age
@@ -48,4 +53,5 @@ form:
       type : number
       flex : 1
       icon : add_photo_alternate
-      validator : nameValidator
+      validations:
+        - isNotEmpty: This field is required
