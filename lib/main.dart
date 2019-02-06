@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fy/src/widgets/fy_form_field.dart';
-import 'package:fy/src/fy_theme.dart';
+import 'package:fyforms/src/widgets/fy_form_field.dart';
+import 'package:fyforms/src/fy_theme.dart';
 import 'package:yaml/yaml.dart';
 
 void main() {

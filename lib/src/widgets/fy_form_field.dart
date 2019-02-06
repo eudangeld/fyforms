@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import "package:fy/src/fy_icons.dart" as fycons;
-import "package:fy/src/fy_validators.dart" as fyvalidators;
+import "package:fyforms/src/fy_icons.dart" as fycons;
+import "package:fyforms/src/fy_validators.dart" as fyvalidators;
 
 class FyFormField extends StatelessWidget {
   FyFormField({
     @required this.fieldData,
+    @required this.themData,
     Key key,
   }) : super(key: key);
   dynamic fieldData;
   BuildContext context;
+  ThemeData themData;
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +27,11 @@ class FyFormField extends StatelessWidget {
                 ? fyvalidators.validators[fieldData['column']['validator']]
                 : (value) => value,
             decoration: InputDecoration(
-                hintStyle: Theme.of(context).textTheme.display1,
-                labelStyle: Theme.of(context).textTheme.title,
+                hintStyle: themData.textTheme.display1,
+                labelStyle: themData.textTheme.title,
                 icon: Icon(
                   fycons.t[fieldData['column']['icon']],
-                  color: Theme.of(context).textTheme.title.color,
+                  color: themData.textTheme.title.color,
                 ),
                 hintText: fieldData['column']['hint'],
                 labelText: fieldData['column']['label'],
