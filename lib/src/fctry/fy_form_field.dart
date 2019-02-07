@@ -3,8 +3,8 @@ import "package:fyforms/src/fy_icons.dart" as fycons;
 import 'package:flutter/material.dart';
 import 'package:fyforms/src/validate/fy_validation.dart';
 
-class FyFormField extends StatelessWidget {
-  FyFormField({
+class FyFormFactory extends StatelessWidget {
+  FyFormFactory({
     @required this.fieldData,
     @required this.themData,
     @required this.data,

@@ -16,7 +16,7 @@ form:
       icon : access_alarms
       validations: 
         isNotEmpty: Preencha todo mundo
-        isInt: Precisa ser inteiro
+        
 
   - column:
       id: last_name
